@@ -47,7 +47,7 @@ const Data:React.FC = () => {
 
   const clearNumbers = (): void => {
      setNumbers([])
-     setOutput([])
+     setOutput('')
   }
 
  
