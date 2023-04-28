@@ -187,7 +187,7 @@ function average(x: number[]) {
   result = counter / 2
   //console.log(counter, result)
 
-  setOutput(`Sum is: ${counter} and average is: ${result.toFixed(2)}`)
+  setOutput(`Sum is: ${counter} and average is: ${result}`)
 }
 
 function over50 (x: number[]) {
@@ -270,49 +270,85 @@ function findNumber7(x: number[]) {
   const backHome = () => {
     router.push('/')
   }
+
+  const handleString = () => {
+    router.push('/stringlevel1')
+  }
     
   return (
     
     <>
        <h1 className='text-center text-2xl my-10 pt-10 text-neutral-500'>
-         Arrays | level I
+         Arrays | Numbers
        </h1>
 
 
-      <div className='mt-5 py-5'>
-        <button className="bg-blue-300 mx-5 px-3 py-2 rounded-md"
+      <div className='btns ps-2' >
+        <button className="bg-blue-300 ms-10 px-3 py-2 rounded-md "
                 onClick={() => genrateNums()} >
            Generate Numbers
         </button>
 
-        <button className="bg-blue-300 mx-5 px-3 py-2 rounded-md" 
+        <button className="bg-orange-300 ms-10 px-3 py-2 rounded-md" 
                 onClick={() => clearNumbers()} >
            Clear
         </button>
       </div>
 
 
-      <div className="text-center text-light" id='list'>{numbers.join(' , ')}</div>
+      <div className="text-center text-light my-7" id='list'>{numbers.join(' , ')}</div>
 
 
-       <select name="selectMethod" id="selectMethod" className='mx-5'
-        ref={ref} onChange={handleChange} >
+       <div className='select-box '>
+         <select name="selectMethod" id="selectMethod" className='mx-5 py-2'
+          ref={ref} onChange={handleChange} >
 
-        {obj.map((x, i) => (
-          <option key={i} value={Object.keys(x)}  >
-            {Object.values(x)}
-          </option>
-        ))}
+          {obj.map((x, i) => (
+            <option key={i} value={Object.keys(x)}  >
+              {Object.values(x)}
+            </option>
+          ))}
         
-      </select>
+        </select>
+       </div>
     
 
-      <div className="my-3 text-center">{output}</div>
+      <div className="my-8 text-center">{output}</div>
 
-      <button className='bg-indigo-300 mx-5 px-3 py-2 mt-10 rounded-md'
+      
+
+      <div className='btns ps-2' >
+        <button className='bg-violet-300 mx-5 ms-10 px-3 py-2 mt-10 rounded-md'
               onClick={backHome}> 
          Back
       </button>
+
+        <button className="bg-sky-300 ms-10 px-3 py-2 rounded-md" 
+                onClick={handleString} >
+           String Challanges
+        </button>
+      </div>
+
+      <style>{`
+       
+        .btns {
+          position: relative;
+          width: 350px;
+          margin: 0 auto;
+        }
+
+        .select-box {
+          position: relative;
+          width: 350px;
+          margin: 0 auto;
+        }
+
+        #selectMethod{
+          width: 87%;
+
+        }
+      
+      `}</style>
     </>
   )
 }
