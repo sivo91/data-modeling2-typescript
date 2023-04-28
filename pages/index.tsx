@@ -19,7 +19,11 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="bg-stone-100 py-10 customBorder">02</div>
+        <div className="bg-stone-100 py-10 customBorder text-center">
+           <Link href={'/stringlevel1'}>
+            Array | Strings
+           </Link>
+        </div>
         <div className="bg-stone-100 py-10 rounded-tr-lg customBorder">03</div>
         <div className="col-span-2 bg-stone-100 py-10 customBorder">04</div>
         <div className="bg-stone-100 py-10 customBorder">05</div>
