@@ -58,6 +58,10 @@ const Data:React.FC = () => {
   const handleChange = ( /* React.ChangeEventHandler<HTMLSelectElement> */ ): void => {
     //console.log(ref.current!.value)
     let option = ref.current!.value
+
+    if(numbers.length < 1) {
+      alert('get your numbers.')
+    }
   
 
      if(option === 'even') { 
@@ -271,9 +275,6 @@ function findNumber7(x: number[]) {
     router.push('/')
   }
 
-  const handleString = () => {
-    router.push('/stringlevel1')
-  }
     
   return (
     
@@ -318,15 +319,10 @@ function findNumber7(x: number[]) {
       
 
       <div className='btns ps-2' >
-        <button className='bg-violet-300 mx-5 ms-10 px-3 py-2 mt-10 rounded-md'
+        <button className='bg-red-300  mx-5 ms-10 px-3 py-2 mt-10 rounded-md'
               onClick={backHome}> 
          Back
       </button>
-
-        <button className="bg-sky-300 ms-10 px-3 py-2 rounded-md" 
-                onClick={handleString} >
-           String Challanges
-        </button>
       </div>
 
       <style>{`

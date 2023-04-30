@@ -7,28 +7,33 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
    <>
-      <h1 className="text-2xl text-center text-neutral-500 mt-10 pt-10  font-bold underline">
+      <h1 className="text-2xl text-center text-neutral-500 mt-10 pt-10  font-bold underline ">
         Data Modeling
       </h1>
 
-      <div className="grid grid-cols-3 gap-4 mt-10 mx-4">
+     <div className='container py-10 px-10 mx-0 min-w-full flex flex-col items-center'>
+       <Link href={'https://github.com/sivo91/data-modeling2-typescript'}>
+         <button className='bg-slate-950 text-gray-50 px-3 py-2 rounded-lg
+              '>
+        GitHub Source
+      </button>
+       </Link>
+     </div>
 
-        <div className="bg-stone-100 py-10 rounded-tl-lg customBorder text-center">
-          <Link href={'/arraylevel1'}>
-           Array | Numbers
-          </Link>
-        </div>
+      <div className="container py-10 px-10 mx-0 min-w-full flex flex-col items-center">
+         
+         <Link href={'/arraylevel1'}>
+          <button className='bg-blue-500 text-gray-50 px-3 py-2'>
+            Array | Numbers
+          </button>
+         </Link>
 
-        <div className="bg-stone-100 py-10 customBorder text-center">
-           <Link href={'/stringlevel1'}>
+         <Link href={'/stringlevel1'}>
+          <button className='bg-blue-500 text-gray-50 my-3 px-3 py-2'>
             Array | Strings
-           </Link>
-        </div>
-        <div className="bg-stone-100 py-10 rounded-tr-lg customBorder">03</div>
-        <div className="col-span-2 bg-stone-100 py-10 customBorder">04</div>
-        <div className="bg-stone-100 py-10 customBorder">05</div>
-        <div className="bg-stone-100 py-10 rounded-bl-lg customBorder">06</div>
-        <div className="col-span-2 bg-stone-100 py-10 rounded-br-lg customBorder">07</div>
+          </button>
+         </Link>
+         
       </div>
 
       <style>{`

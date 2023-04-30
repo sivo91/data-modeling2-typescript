@@ -1,18 +1,119 @@
-import React from 'react'
+import React, { useState, useRef, useEffect, FormEvent } from 'react'
 import { useRouter } from 'next/router'
 
 
 
+const sentences = [
+  `The lake is a long way from here.`,
+  `Purple is the best city in the forest.`,
+  `He colored deep space a soft yellow.`,
+  `She looked into the mirror and saw another person.`,
+  `He colored deep space a soft yellow.`,
+  `Edith could decide if she should paint her teeth or brush her nails.`,
+  `The doll spun around in circles in hopes of coming alive.`,
+  `They were excited to see their first sloth.`,
+  `He waited for the stop sign to turn to a go sign.`,
+  `Abstraction is often one floor above you.`,
+  `Možná je to tím, že to pak na nás vymysleli `,
+  `V nasledujúcej sezóne ho nahradilo družstvo HC Slovan Bratislava`,
+  `Rock music approaches at high velocity`,
+  `Greetings from the real universe`,
+  `Be careful with that butter knife`,
+  `How to Iterate Through Strings in JavaScript`,
+  `The String Array can be iterated using the for loop`
+
+]
+
+
+const obj = [
+        {select: 'select'},
+        {even: 'even | odd nums'},
+        {shortest: 'shortest | longest'},
+        {pop:'remove last number'},
+        {removeFirst: 'remove first number'},
+        {sum: 'sum of numbers'},
+        {avg: 'average of nums'},
+        {over50: 'remove num bigger than 50'},
+        {pair: 'find 2 numbers to sum 15'}
+       ]
+
+
 const String: React.FC = () => {
 
+
+  let arr: string[] = []
+
+  const [strings, setStrings] = useState<string>('')
+  const ref = useRef<HTMLSelectElement>(null)
+  const [output, setOutput] = useState<number | string>()
+  const [outputArr, setOutputArr] = useState<string[]>([])
   const router = useRouter()
 
-  const backHome = () => {
-    router.push('/')
+
+
+  const genrateSentence = (): void => {
+     setOutput('')
+     let arr: string = ''
+
+       for(let i = 0; i < sentences.length; i++) {
+
+          let randomVeta = Math.floor(Math.random() * sentences.length)
+          //console.log(sentences[randomVeta])
+           arr = sentences[randomVeta]
+          setStrings(arr)
+       } 
+
+     } 
+
+  const handleClear = ():void => {
+      setOutput('')
   }
 
-  const handleString = () => {
-    router.push('/arraylevel1')
+  const handleChange = (): void => {
+    //console.log(ref.current!.value)
+    let option = ref.current!.value
+    console.log(option)
+
+    if(strings === '') {
+      alert('get your sentence')
+    }
+
+    if(option === 'shortest') {
+      shortest(strings)
+    }
+  }
+
+
+  const shortest = (t:string) => {
+    let text = t.split(' ') //  !   '' !== ' '
+    let shortest: string = text[1]
+    let longest: string = text[0]
+   
+    // SHORTEST
+    for(let i = 0; i < text.length; i++) {
+       if( text[i].length < shortest.length) {
+        shortest = text[i]
+       }
+    }
+
+    // LONGEST
+    for(let i = 0; i < text.length; i++) {
+      if(text[i].length > longest.length) {
+        longest = text[i]
+      }
+    }
+
+
+    setOutput(`Your shortest string is: [ ${shortest} ], \n\n 
+               Your longest string is: [ ${longest} ] `)
+  }
+
+
+
+
+
+    const backHome = () => {
+    router.push('/')
   }
 
   return (
@@ -21,16 +122,52 @@ const String: React.FC = () => {
          Arrays | Strings
        </h1>
 
+       
+      <div className='btns ps-2' >
+        <button className="bg-blue-300 ms-10 px-3 py-2 rounded-md "
+                onClick={() => genrateSentence()} >
+           Generate Numbers
+        </button>
+
+        <button className="bg-orange-300 ms-10 px-3 py-2 rounded-md" 
+                onClick={() => handleClear()} >
+           Clear
+        </button>
+      </div>
+
+
+
+      <h1 className="text-center text-light my-7" id='list'>{strings}</h1>
+
+
+
+
+       {/* SELECT OPTION */}
+      <div className='select-box '>
+         <select name="selectMethod" id="selectMethod" className='mx-5 py-2'
+          ref={ref} onChange={handleChange} >
+
+          {obj.map((x, i) => (
+            <option key={i} value={Object.keys(x)}  >
+              {Object.values(x)}
+            </option>
+          ))}
+        
+        </select>
+      </div>
+
+
+        {/* OUTPUT */}
+      <p className='text-center my-5'>{output}</p>
+
+     
+
+
        <div className='btns ps-2' >
         <button className='bg-violet-300 mx-5 ms-10 px-3 py-2 mt-10 rounded-md'
               onClick={backHome}> 
          Back
       </button>
-
-        <button className="bg-sky-300 ms-10 px-3 py-2 rounded-md" 
-                onClick={handleString} >
-           Number Challanges
-        </button>
       </div>
 
       <style>{`
