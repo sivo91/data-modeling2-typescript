@@ -6,13 +6,9 @@ const Navbar = () => {
     <>
      <nav>
        <div className="menu">
-        <Link href={'/arraylevel1'} className='link'>
-             <p>Chalanges I</p>
+        <Link href={'/'} className='link'>
+             <p>Home</p>
        </Link>
-       <Link href={'#'} className='link'>
-             <p>Chalanges II</p>
-       </Link>
-      
        </div>
      </nav>
 
