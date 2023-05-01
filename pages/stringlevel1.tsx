@@ -27,14 +27,10 @@ const sentences = [
 
 const obj = [
         {select: 'select'},
-        {even: 'even | odd nums'},
-        {shortest: 'shortest | longest'},
-        {pop:'remove last number'},
-        {removeFirst: 'remove first number'},
-        {sum: 'sum of numbers'},
-        {avg: 'average of nums'},
-        {over50: 'remove num bigger than 50'},
-        {pair: 'find 2 numbers to sum 15'}
+        {even: 'even | odd length'},
+        {shortest: 'shortest | longest string'},
+        {shortesLength: 'shortes.length | longest.length'}
+        
        ]
 
 
@@ -80,9 +76,28 @@ const String: React.FC = () => {
 
     if(option === 'shortest') {
       shortest(strings)
+    } else if(option === 'even') {
+      evenOddLength(strings)
     }
   }
 
+  
+
+  const evenOddLength = (t: string) => {
+     let text = strings.split(' ')
+      const even: string [] = []
+     const odd: string [] = []
+
+     for(let i = 0; i < text.length; i++) {
+      if(text[i].length % 2 === 0) {
+         even.push(text[i])
+      } else {
+        odd.push(text[i])
+      }
+     }
+
+    setOutput(`Even string: [ ${even} ],  Odd string: [ ${odd} ]`); 
+  }
 
   const shortest = (t:string) => {
     let text = t.split(' ') //  !   '' !== ' '
@@ -107,8 +122,6 @@ const String: React.FC = () => {
     setOutput(`Your shortest string is: [ ${shortest} ], \n\n 
                Your longest string is: [ ${longest} ] `)
   }
-
-
 
 
 
